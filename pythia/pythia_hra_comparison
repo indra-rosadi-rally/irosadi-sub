@@ -1,0 +1,20 @@
+namespace:
+  name: pythia_hra_comparison
+  unit: rallyid
+  segments: 100
+
+experiment_definitions:
+  - definition: Default_Experiment
+    assign: !planout |
+      hraComparison  = 'showHra';
+  - definition: Experiment_hra_comparison
+    assign: !planout |
+      hraComparison = uniformChoice(choices=['showHra', 'hideHra'], unit=rallyid);
+
+default_experiment: Default_Experiment
+
+experiment_sequence:
+  - action: add
+    definition: Experiment_hra_comparison
+    name: PythiaExperiment_hra_comparison
+    segments: 100
