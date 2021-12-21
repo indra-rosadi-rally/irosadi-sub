@@ -11,5 +11,5 @@ jobs:
           curl -X POST https://api.github.com/repos/indra-rosadi-rally/irosadi-test-repo/dispatches \
           -H 'Accept: application/vnd.github.everest-preview+json' \
           -u indra-rosadi-rally:${{ secrets.MY_REPO_PAT }} \
-          --data '{"event_type": "ping", "client_payload": { "repository": "arst" }}
+          --data '{"event_type": "ping", "client_payload": { "repository": "arst" }}'
 
