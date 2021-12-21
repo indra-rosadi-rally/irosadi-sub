@@ -6,7 +6,7 @@ namespace:
 experiment_definitions:
   - definition: Default_Experiment
     assign: !planout |
-      hraComparison  = 'showHra';
+      hraComparison  = 'hideHra';
   - definition: Experiment_hra_comparison
     assign: !planout |
       hraComparison = uniformChoice(choices=['showHra', 'hideHra'], unit=rallyid);
