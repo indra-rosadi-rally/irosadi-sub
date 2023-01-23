@@ -1,12 +1,13 @@
 name: main-process
 on:
-  push:
-    branches:
-      - main
+  pull_request:
+    types:
+      - closed
 
 concurrency: main-process
 jobs:
   main-process:
+    if: github.event.pull_request.merged == true
     runs-on: ubuntu-latest
     steps:
       - name: Get access token

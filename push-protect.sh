@@ -3,7 +3,6 @@ echo "Pushing the current commit to a temporary branch: $TEMP_BRANCH"
 git checkout -b $TEMP_BRANCH
 git push -u origin $TEMP_BRANCH
 git checkout main
-git commit --amend -m "Automatic commit [skip actions]"
 WAIT_UNTIL=$((`date +%s` + 600))
 while [ true ]
 do
