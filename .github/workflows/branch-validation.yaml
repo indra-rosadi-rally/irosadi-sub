@@ -4,6 +4,10 @@ on:
     branches:
       - 'push-protect/**'
 
+  pull_request:
+    types:
+      - open
+
 jobs:
   my-branch-validation:
     runs-on: ubuntu-latest
