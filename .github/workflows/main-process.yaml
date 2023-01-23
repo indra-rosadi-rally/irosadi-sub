@@ -1,0 +1,38 @@
+name: main-process
+on:
+  push:
+    branches:
+      - main
+
+concurrency: main-process
+jobs:
+  main-process:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Get access token
+        id: generate_token
+        uses: tibdex/github-app-token@v1
+        with:
+          app_id: 281001
+          private_key: ${{ secrets.PRIVATE_KEY }}
+
+      - name: Check out
+        uses: actions/checkout@v3
+        with:
+          token: ${{ secrets.PRIVATE_KEY }}
+          repository: ${{ github.event.pull_request.head.repo.full_name }}
+          ref: ${{ github.event.pull_request.head.ref }}
+
+      - name: Update file
+        run: echo "`date`" >> hello.txt
+
+      - name: Add and commit files
+        id: stepAddAndCommit
+        uses: EndBug/add-and-commit@v9
+        with:
+          message: 'Automatic commit [skip actions]'
+          push: false
+
+      - name: Push to main
+        run: ./push-protect.sh
+        shell: bash

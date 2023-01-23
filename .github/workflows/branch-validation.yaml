@@ -1,0 +1,14 @@
+name: branch-validation
+on:
+  push:
+    branches:
+      - 'push-protect/**'
+jobs:
+  my-branch-validation:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out
+        uses: actions/checkout@v3
+
+      - name: Run script
+        run: echo "Hello"
