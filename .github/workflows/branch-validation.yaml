@@ -2,7 +2,8 @@ name: branch-validation
 on:
   push:
     branches:
-      - 'push-protect/**'
+      - '**'
+      - '!main'
 
 jobs:
   my-branch-validation:
