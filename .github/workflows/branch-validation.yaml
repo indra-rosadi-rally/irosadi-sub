@@ -3,6 +3,12 @@ on:
   push:
     branches:
       - 'push-protect/**'
+
+  pull-request:
+    branches-ignore:
+      - 'push-protect/**'
+
+
 jobs:
   my-branch-validation:
     runs-on: ubuntu-latest
