@@ -10,7 +10,13 @@ while :; do
   echo "Attempting to push to main"
   if git push origin main; then
     echo "Push is successful... Will delete temporary branch $TEMP_BRANCH"
-    git push origin --delete $TEMP_BRANCH
+    if git push origin --delete $TEMP_BRANCH; then
+      echo "Temp branch $TEMP_BRANCH is deleted."
+      exit 0
+    else
+      echo "Failed to delete temp branch $TEMP_BRANCH"
+      exit 1
+    fi
   else
     echo "Push to main still failed."
     CUR_TIME=$((`date +%s`))
