@@ -34,5 +34,5 @@ jobs:
           push: false
 
       - name: Push to main
-        run: ./push-protect.sh
+        run: bash ./push-protect.sh
         shell: bash
