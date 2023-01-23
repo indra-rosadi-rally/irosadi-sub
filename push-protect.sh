@@ -1,6 +1,8 @@
 TEMP_BRANCH="push-protect/$RANDOM-$RANDOM-$RANDOM"
 echo "Pushing the current commit to a temporary branch: $TEMP_BRANCH"
+git checkout -b $TEMP_BRANCH
 git push -u origin $TEMP_BRANCH
+git checkout main
 WAIT_UNTIL=$((`date +%s` + 600))
 while [ true ]
 do
