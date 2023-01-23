@@ -4,11 +4,6 @@ on:
     branches:
       - 'push-protect/**'
 
-  pull_request:
-    branches-ignore:
-      - 'push-protect/**'
-
-
 jobs:
   my-branch-validation:
     runs-on: ubuntu-latest
