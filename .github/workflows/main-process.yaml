@@ -24,8 +24,8 @@ jobs:
           repository: ${{ github.event.pull_request.head.repo.full_name }}
           ref: main
 
-      - name: Update file
-        run: echo "`date`" >> hello.txt
+#      - name: Update file
+#        run: echo "`date`" >> hello.txt
 
       - name: Add and commit files
         id: stepAddAndCommit
@@ -35,5 +35,9 @@ jobs:
           push: false
 
       - name: Push to main
+        if: ${{ steps.stepAddAndCommit.outputs.committed == 'true' }}
         run: bash ./push-protect.sh
-        shell: bash
+
+      - name: Nothing to commit
+        if: ${{ steps.stepAddAndCommit.outputs.committed != 'true' }}
+        run: echo "Nothing to commit"
