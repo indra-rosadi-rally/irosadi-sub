@@ -24,8 +24,8 @@ jobs:
           repository: ${{ github.event.pull_request.head.repo.full_name }}
           ref: main
 
-#      - name: Update file
-#        run: echo "`date`" >> hello.txt
+      - name: Update file
+        run: echo "`date`" >> hello.txt
 
       - name: Add and commit files
         id: stepAddAndCommit
