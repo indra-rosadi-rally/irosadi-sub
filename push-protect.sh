@@ -10,7 +10,7 @@ do
   sleep 30
   echo "Attempting to push to main"
   if git push origin main; then
-    echo "Push is successful"
+    echo "Push is successful... Will delete temporary branch $TEMP_BRANCH"
     git push origin --delete $TEMP_BRANCH
     exit 0
   else
