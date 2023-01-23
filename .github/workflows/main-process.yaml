@@ -19,7 +19,7 @@ jobs:
       - name: Check out
         uses: actions/checkout@v3
         with:
-          token: ${{ secrets.PRIVATE_KEY }}
+          token: ${{ steps.generate_token.outputs.token }}
           repository: ${{ github.event.pull_request.head.repo.full_name }}
           ref: ${{ github.event.pull_request.head.ref }}
 
